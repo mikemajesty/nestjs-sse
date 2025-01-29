@@ -1,8 +1,15 @@
 <script type="text/javascript">
-  const eventSource = new EventSource('http://localhost:3002/sse');
-  eventSource.onmessage = ({ data }) => {
+  const eventSource1 = new EventSource('http://localhost:3002/sse/1');
+  eventSource1.onmessage = ({ data }) => {
     const message = document.createElement('li');
-    message.innerText = 'New message: ' + data;
+    message.innerText = 'Event 1: ' + data;
+    document.body.appendChild(message);
+  }
+
+  const eventSource2 = new EventSource('http://localhost:3002/sse/2');
+  eventSource2.onmessage = ({ data }) => {
+    const message = document.createElement('li');
+    message.innerText = 'Event 2: ' + data;
     document.body.appendChild(message);
   }
 </script>
